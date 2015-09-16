@@ -15,7 +15,7 @@ if sys.argv[-1] != ASADMIN:
     shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
     sys.exit(0)
 
-PATH = "C:\\SomeDir\\example\\implant" 
+PATH = "C:\\SomeDir\\example\\implant.exe" 
 
 if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
     break
