@@ -6,7 +6,7 @@ import _winreg
 import win32com.shell.shell as shell
 
 
-# Elevate privilege
+# Elevate Privilege
 ASADMIN = 'asadmin'
 
 if sys.argv[-1] != ASADMIN:
