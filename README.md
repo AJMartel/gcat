@@ -13,7 +13,7 @@ before compiling. The shellcode will then execute the implant.
 Finally i've added some logic to have the downloader add a registry entry to point to the path of the implant
 to have it run at boot. Please note that this is a work in progress and that some improvement may be desirable.
 
-On how to operate the rest of the tool please see the rest of the original readme below.
+On how to operate the rest of the tool please see the original readme below.
  
  
 
