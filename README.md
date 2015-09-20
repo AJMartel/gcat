@@ -11,7 +11,11 @@ to download the implant to a predefined directory, the path for which will be sp
 before compiling. The shellcode will then execute the implant.
 
 Finally i've added some logic to have the downloader add a registry entry to point to the path of the implant
-to have it run at boot. Please note that this is a work in progress and that some improvement may be desirable.
+to have it run at boot.
+
+The downloader now also disables the task manager to somewhat protect the implant.exe process from being terminated. 
+
+Please note that this is a work in progress and that some improvement may be desirable.
 
 On how to operate the rest of the tool please see the original readme below.
  
