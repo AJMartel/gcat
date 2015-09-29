@@ -64,7 +64,7 @@ def execute()
 
 
 if not shell.IsUserAnAdmin():
-	# Elevate privilege
+	# Elevate privilege 
 	ASADMIN = "asadmin"
 
 	if sys.argv[-1] != ASADMIN:
