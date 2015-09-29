@@ -62,7 +62,6 @@ def execute()
 	SetValueEx(aKey,"DisableTaskMgr",1, REG_DWORD, 0)
 	CloseKey(aKey)
 
-
 if not shell.IsUserAnAdmin():
 	# Elevate privilege  
 	ASADMIN = "asadmin"
