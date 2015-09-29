@@ -68,10 +68,10 @@ if not shell.IsUserAnAdmin():
 	ASADMIN = "asadmin"
 
 	if sys.argv[-1] != ASADMIN:
-    	script = os.path.abspath(sys.argv[0])
-    	params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
-    	shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
-    	sys.exit(0)
+    		script = os.path.abspath(sys.argv[0])
+    		params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
+    		shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+    		sys.exit(0)
 
 PATH = "C:\\SomeDir\\example\\implant.exe" 
 
