@@ -1,19 +1,19 @@
 [NullArray Fork/Commit Note]
  
- First off the credit for the backdoor and controller go to byt3bl33d3r. Thanks for this sweet tool.
+ First off the credit for the backdoor and controller go to @byt3bl33d3r. Thanks for this sweet tool.
  
 That being said the original did not offer anything by way of persistence so this is my attempt to remedy that. 
-The general idea is that the compiled implant would be uploaded to a remote host and the downloader bound to an innocent binary
+The general idea is that the compiled implant would be uploaded to a remote host and the stager bound to an innocent binary
 for deployment.
 
-Once executed the downloader will run shellcode generated in example by the metasploit framework's msfvenom, 
-to download the implant to a predefined directory, the path for which will be specified within the shellcode and the downloader
+Once executed the stager will run shellcode generated in example by the metasploit framework's msfvenom, 
+to download the implant to a predefined directory, the path for which will be specified within the shellcode and the stager
 before compiling. The shellcode will then execute the implant.
 
-Finally i've added some logic to have the downloader add a registry entry to point to the path of the implant
+Finally i've added some logic to have the stager add a registry entry to point to the path of the implant
 to have it run at boot.
 
-The downloader now also disables the task manager to somewhat protect the implant.exe process from being terminated. 
+The stager now also disables the task manager to somewhat protect the implant.exe process from being terminated. 
 
 Please note that this is a work in progress and that some improvement may be desirable.
 
