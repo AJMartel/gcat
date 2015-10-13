@@ -1,7 +1,7 @@
 [Fork Note]
 ====
  
- First off the credit for the backdoor and controller go to @byt3bl33d3r. Thanks for this sweet tool.
+ First off the credit for the backdoor and controller go to byt3bl33d3r https://github.com/byt3bl33d3r. Thanks for this sweet tool.
  
 That being said the original did not offer anything by way of persistence so this is my attempt to remedy that. 
 The general idea is that the compiled implant would be uploaded to a remote host and the stager bound to an innocent binary
